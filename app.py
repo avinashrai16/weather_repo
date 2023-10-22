@@ -20,9 +20,11 @@ def get_watherdata():
     weather_data = requests.get(url,params=params)
     weather_data_json = weather_data.json()
     city = weather_data_json['name']
-    temp_min = weather_data_json['temp_min'] 
-    temp_max = weather_data_json['temp_max'] 
-    return f"temp_range for {city} is with min of {temp_min} max of {temp_max}"
+    temp_min = weather_data_json['main']['temp_min']
+    temp_max = weather_data_json['main']['temp_max']
+    
+    return f"""temp_range for {city} with min of {temp_min} and max of {temp_max} 
+    the complete weather data is mentioned below </br> {weather_data_json}"""
 
 
 if __name__ == "__main__":
