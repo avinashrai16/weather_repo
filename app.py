@@ -18,12 +18,9 @@ def get_watherdata():
           "units":request.form["units"]
           }
     weather_data = requests.get(url,params=params)
-    #print(weather_data.status_code)
-    #weather_data_dict = json.loads(str(weather_data.json()))
-    #temp_min = weather_data.json()["temp_min"]
-    #temp_max = weather_data_dict["temp_max"]
-    #print(temp_min)
-    return f"temp_range for {request.form['city']} is {weather_data.json()} "
+    weather_data_json = weather_data.json()
+    city = weather_data_json['name']
+    return f"temp_range for {city} is {weather_data.json()} "
 
 
 if __name__ == "__main__":
